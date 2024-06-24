@@ -6,3 +6,31 @@
 //
 
 import Foundation
+
+struct ImageData: Codable {
+    let sprites: PokemonSprites?
+}
+
+class PokemonSprites: Codable {
+    let other: Other?
+    
+    init(other: Other?) {
+        self.other = other
+    }
+}
+
+struct Other: Codable {
+    let officialArtWork: PokemonOfficialArtWork?
+    
+    enum CodingKeys: String, CodingKey {
+        case officialArtWork = "official-artwork"
+    }
+}
+
+struct PokemonOfficialArtWork: Codable {
+    let frontDefault: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case frontDefault = "front_default"
+    }
+}
